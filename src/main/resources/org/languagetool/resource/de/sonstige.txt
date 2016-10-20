@@ -7,6 +7,8 @@ abend	abend	ADV:TMP
 abends	abends	ADV:TMP
 aber	aber	ADV:MOD
 aber	aber	KON:NEB
+Aber	aber	ADV:MOD
+Aber	aber	KON:NEB
 abermals	abermals	ADV:TMP
 abg	abg	ABK:Abgeordneter:SUB
 abs	abs	ABK:Absatz:SUB
