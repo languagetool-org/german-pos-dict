@@ -18,6 +18,10 @@
         </license>
     </licenses>
 
+    <scm>
+        <url>https://github.com/languagetool-org/german-pos-dict</url>
+    </scm>
+    
     <build>
         <resources>
             <resource>
