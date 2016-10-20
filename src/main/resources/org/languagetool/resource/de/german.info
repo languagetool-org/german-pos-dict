@@ -2,7 +2,7 @@
 # Dictionary properties.
 #
 
-fsa.dict.separator=+
-fsa.dict.encoding=iso-8859-1
+fsa.dict.separator=_
+fsa.dict.encoding=utf8
 
 fsa.dict.encoder=SUFFIX
