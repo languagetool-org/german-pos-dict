@@ -32,21 +32,25 @@ dbimport
 cat csv.sql | sed 's/_OUTPUT_/\/tmp\/output-adjektive.csv/' | sed 's/_TABLE_/adjektive/' >tmp.sql
 dbimport
 
-cat /tmp/output-verben.csv /tmp/output-nomen.csv /tmp/output-adjektive.csv >output-all.csv
+# ^\t -> some items have empty forms (because they are deleted), filter them:
+grep -v -P '^\t' /tmp/output-verben.csv | python3 ./transform-pos.py >/tmp/output-verben-reordered.csv
 
+cat src/main/resources/org/languagetool/resource/de/EIG.txt src/main/resources/org/languagetool/resource/de/sonstige.txt \
+  /tmp/output-verben-reordered.csv /tmp/output-nomen.csv /tmp/output-adjektive.csv | grep -v -P '^\t' >output-all.csv
+  
 echo "Size of dictionary as plain text:"
 ls -lh output-all.csv
 
-echo "Building POS dictionary:"
-java -cp $LT_PATH/languagetool.jar org.languagetool.tools.POSDictionaryBuilder -i output-all.csv -info $LT_PATH/org/languagetool/resource/de/german.info -o src/main/resources/org/languagetool/resource/de/german.dict
-cp $LT_PATH/org/languagetool/resource/de/german.info src/main/resources/org/languagetool/resource/de/
+echo "Building POS dictionary, using src/main/resources/org/languagetool/resource/de/german.info:"
+java -cp $LT_PATH/languagetool.jar org.languagetool.tools.POSDictionaryBuilder -i output-all.csv -info src/main/resources/org/languagetool/resource/de/german.info -o src/main/resources/org/languagetool/resource/de/german.dict
 
-echo "Building synth dictionary:"
-java -cp $LT_PATH/languagetool.jar org.languagetool.tools.SynthDictionaryBuilder -i output-all.csv -info $LT_PATH/org/languagetool/resource/de/german_synth.info -o src/main/resources/org/languagetool/resource/de/german_synth.dict
-cp $LT_PATH/org/languagetool/resource/de/german_synth.info src/main/resources/org/languagetool/resource/de/
+echo "Building synth dictionary, using src/main/resources/org/languagetool/resource/de/german_synth.info:"
+java -cp $LT_PATH/languagetool.jar org.languagetool.tools.SynthDictionaryBuilder -i output-all.csv -info src/main/resources/org/languagetool/resource/de/german_synth.info -o src/main/resources/org/languagetool/resource/de/german_synth.dict
+
+LANG=C awk 'BEGIN {FS="\t"} {print $3}' output-all.csv | sort | uniq >src/main/resources/org/languagetool/resource/de/german_tags.txt
 
 echo "Cleaning up temp files..."
-rm output-all.csv
+rm output-all.csv /tmp/output-verben.csv /tmp/output-verben-reordered.csv /tmp/output-nomen.csv /tmp/output-adjektive.csv
 
 echo "Dropping temp database..."
 mysqladmin -u $DBUSER --password=$DBPASS drop flexiontmp
