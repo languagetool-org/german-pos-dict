@@ -4,7 +4,7 @@
 
 DBUSER="root"
 DBPASS=""
-LT_PATH="/prg/LanguageTool-3.5-SNAPSHOT"
+LT_PATH="/prg/LanguageTool-3.5"
 
 gunzip verben.sql.gz nomen.sql.gz adjektive.sql.gz
 
