@@ -4,7 +4,13 @@
 
 DBUSER="root"
 DBPASS=""
-LT_PATH="/prg/LanguageTool-3.5"
+LT_PATH="/prg/LanguageTool-3.6"
+
+if [ ! -d $LT_PATH ]
+then
+  echo "Error: LT_PATH does not exist: $LT_PATH"
+  exit
+fi
 
 gunzip verben.sql.gz nomen.sql.gz adjektive.sql.gz
 
