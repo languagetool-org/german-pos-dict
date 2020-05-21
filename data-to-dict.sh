@@ -4,7 +4,7 @@
 
 DBUSER="root"
 DBPASS=""
-LT_PATH="/prg/LanguageTool-3.6"
+LT_PATH="/prg/LanguageTool-4.9"
 # the value of MySQL's secure_file_priv setting - only SQL files in here can be imported:
 IMPORT_DIR=/var/lib/mysql-files
 

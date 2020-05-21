@@ -1,7 +1,7 @@
 #!/bin/bash
 # export binary Morfologik file to plain text
 
-LT_PATH="/prg/LanguageTool-4.5"
+LT_PATH="/prg/LanguageTool-4.9"
 
 if [ ! -d "$LT_PATH" ]; then
   echo "Error: LT_PATH does not exist or is not a directory: '$LT_PATH' - set it here in the script"
