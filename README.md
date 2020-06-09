@@ -12,7 +12,9 @@ Also use LanguageTool to export the data in these dictionaries, [as documented h
 
 To make a release:
 
-* set the version to not include `SNAPSHOT`
+* set the version in `pom.xml` to not include `SNAPSHOT`
+* `rm src/main/resources/org/languagetool/resource/de/SynthDictionaryBuilder*tags.txt`
+* `mvn clean test`
 * `mvn clean deploy -P release`
 * go to https://oss.sonatype.org/#stagingRepositories
 * scroll to the bottom, select latest version, and click `Release`
