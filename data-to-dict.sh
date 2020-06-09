@@ -52,7 +52,9 @@ grep -v -P '^\t' $IMPORT_DIR/output-verben.csv | python3 ./transform-pos.py >/tm
 
 cat src/main/resources/org/languagetool/resource/de/EIG.txt src/main/resources/org/languagetool/resource/de/sonstige.txt \
   /tmp/output-verben-reordered.csv $IMPORT_DIR/output-nomen.csv $IMPORT_DIR/output-adjektive.csv | grep -v -P '^\t' >output-all.csv
-  
+
+sed -i 's/:HO[0-9]//' output-all.csv
+
 echo "Size of dictionary as plain text:"
 ls -lh output-all.csv
 
