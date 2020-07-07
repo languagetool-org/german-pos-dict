@@ -1,10 +1,10 @@
 #!/bin/bash
-# Import MySQL dumps to local MySQL, export as CSV, transform CSV to Morfologik binary
+# Import MySQL dumps to local MySQL, merge with existing dict (german.dict), export as CSV, transform CSV to Morfologik binary
 # for use in e.g. LanguageTool
 
 DBUSER="root"
 DBPASS=""
-LT_PATH="/prg/LanguageTool-4.9"
+LT_PATH="/prg/LanguageTool-5.0"
 # the value of MySQL's secure_file_priv setting - only SQL files in here can be imported:
 IMPORT_DIR=/var/lib/mysql-files
 
@@ -50,8 +50,13 @@ dbimport
 # ^\t -> some items have empty forms (because they are deleted), filter them:
 grep -v -P '^\t' $IMPORT_DIR/output-verben.csv | python3 ./transform-pos.py >/tmp/output-verben-reordered.csv
 
-cat src/main/resources/org/languagetool/resource/de/EIG.txt src/main/resources/org/languagetool/resource/de/sonstige.txt \
-  /tmp/output-verben-reordered.csv $IMPORT_DIR/output-nomen.csv $IMPORT_DIR/output-adjektive.csv | grep -v -P '^\t' >output-all.csv
+# export existing dict first, so it can be added:
+java -cp $LT_PATH/languagetool.jar org.languagetool.tools.DictionaryExporter -i src/main/resources/org/languagetool/resource/de/german.dict -info src/main/resources/org/languagetool/resource/de/german.info -o old_version_dump.txt
+
+sed 's/ \+$//' old_version_dump.txt >old_version_dump_trimmed.txt
+
+cat old_version_dump_trimmed.txt src/main/resources/org/languagetool/resource/de/EIG.txt src/main/resources/org/languagetool/resource/de/sonstige.txt \
+  /tmp/output-verben-reordered.csv $IMPORT_DIR/output-nomen.csv $IMPORT_DIR/output-adjektive.csv | sort | uniq | grep -v -P '^\t' >output-all.csv
 
 sed -i 's/:HO[0-9]//' output-all.csv
 

@@ -10,6 +10,15 @@ Also use LanguageTool to export the data in these dictionaries, [as documented h
 
 ## Internal
 
+To prepare a release (note this will only *add* forms, not remove them):
+
+* call `./download-data.sh`
+* set `DBUSER`, `DBPASS`, and `LT_PASS` in `./data-to-dict.sh`
+* call `./data-to-dict.sh`
+* increase version in `pom.xml`
+* call `mvn install`
+* test it from the software that integrates it (including a regression test)
+
 To make a release:
 
 * set the version in `pom.xml` to not include `SNAPSHOT`

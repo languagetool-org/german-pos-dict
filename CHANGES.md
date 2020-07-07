@@ -1,6 +1,9 @@
 german-pos-dict Change Log
 ==========================
 
+### 2020-07-07 (1.2.2)
+* update with ~ 36,000 new forms
+
 ### 2020-06-09 (1.2.1)
 * updated the tags of about 1900 forms to not include `HO0`, `HO1` etc., as these
   are internal to korrekturen.de
