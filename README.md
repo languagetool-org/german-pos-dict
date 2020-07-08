@@ -8,6 +8,8 @@ of this. If you really want to use this directly, please check out the unit test
 
 Also use LanguageTool to export the data in these dictionaries, [as documented here](http://wiki.languagetool.org/developing-a-tagger-dictionary#toc2).
 
+The POS tags are documented [here](https://morphy.wolfganglezius.de/content/2-download/wklassen.pdf).
+
 ## Internal
 
 To prepare a release (note this will only *add* forms, not remove them):
