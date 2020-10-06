@@ -6,7 +6,7 @@ but [Morfologik](https://github.com/morfologik/) binary files to look up part-of
 As a developer, consider using [LanguageTool](https://github.com/languagetool-org) instead
 of this. If you really want to use this directly, please check out the unit tests for examples.
 
-Also use LanguageTool to export the data in these dictionaries, [as documented here](http://wiki.languagetool.org/developing-a-tagger-dictionary#toc2).
+Also use LanguageTool to export the data in these dictionaries, [as documented here](https://dev.languagetool.org/developing-a-tagger-dictionary#exporting-the-data).
 
 The POS tags are documented [here](https://morphy.wolfganglezius.de/content/2-download/wklassen.pdf).
 
