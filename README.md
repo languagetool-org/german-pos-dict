@@ -14,6 +14,7 @@ The POS tags are documented [here](https://morphy.wolfganglezius.de/content/2-do
 
 To prepare a release (note this will only *add* forms, not remove them):
 
+* (optional) move readings from [do-not-synthesize.txt](https://github.com/languagetool-org/languagetool/blob/master/languagetool-language-modules/de/src/main/resources/org/languagetool/resource/de/do-not-synthesize.txt) to `filter-archaic.txt` (in the execution path of SynthDictionaryBuilder)
 * call `./download-data.sh`
 * set `DBUSER`, `DBPASS`, and `LT_PASS` in `./data-to-dict.sh`
 * call `./data-to-dict.sh`
