@@ -5,7 +5,7 @@
 
     <groupId>de.danielnaber</groupId>
     <artifactId>german-pos-dict</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.4</version>
     <url>http://danielnaber.de/morphologie/</url>
     <name>German part-of-speech dictionary</name>
     <description>A German part-of-speech (POS) dictionary as a Morfologik binary</description>
