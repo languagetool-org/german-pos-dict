@@ -1,6 +1,10 @@
 german-pos-dict Change Log
 ==========================
 
+### 2022-07-07 (1.2.4)
+* update with ~ 312,000 new forms
+* Note: version 1.2.3 was skipped and never released
+
 ### 2020-07-07 (1.2.2)
 * update with ~ 36,000 new forms
 
