@@ -12,6 +12,9 @@ The POS tags are documented [here](https://morphy.wolfganglezius.de/content/2-do
 
 ## Internal
 
+If you update the tagger dictionary, always make sure to also update the synth dictionary
+with the same data and vice versa. LanguageTool expects the two to be in sync.
+
 To prepare a release (note this will only *add* forms, not remove them):
 
 * (optional) move readings from [do-not-synthesize.txt](https://github.com/languagetool-org/languagetool/blob/master/languagetool-language-modules/de/src/main/resources/org/languagetool/resource/de/do-not-synthesize.txt) to `filter-archaic.txt` (in the execution path of SynthDictionaryBuilder)
