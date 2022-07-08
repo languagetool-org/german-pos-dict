@@ -16,7 +16,7 @@ fi
 
 if [ ! -d $IMPORT_DIR ]
 then
-  echo "Error: IMPORT_DIR does not exist: $IMPORT_DIRH"
+  echo "Error: IMPORT_DIR does not exist: $IMPORT_DIR"
   exit
 fi
 
