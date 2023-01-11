@@ -31,6 +31,7 @@ ABK:Teil:SUB
 ABK:Telefon:SUB
 ABK:wort=anderem:PRO
 ABK:wort=beziehungsweise:PAR
+ABK:wort=beispielsweise:PAR
 ABK:wort=das:PRO
 ABK:wort=deutsch:ADJ
 ABK:wort=dienstags:PAR
